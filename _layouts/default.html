@@ -3,17 +3,10 @@
   {% include header.html %}
   <body>
       <!-- Primary Layout -->
-      <div class="main-content">
-        <div class="container">
-          {{ content }}
-        </div>
+      <div class="container">
+      {% include navigation.html %}
+      {{ content }}
       </div>
-      
-      <!-- Floating Sidebar -->
-      <div class="floating-sidebar">
-        {% include navigation.html %}
-      </div>
-      
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="{{ site.jsurl | relative_url }}/site.js"></script>
