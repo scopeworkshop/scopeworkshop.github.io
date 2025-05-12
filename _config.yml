@@ -18,19 +18,18 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: GAPS 2025
-organizers: Ashwin Jha and Mustafa Khairallah
-email: gapsworkshop@gmail.com
+title: SCOPE 2025
+organizers: 
+email: scopeworkshop2025@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  The website of the first workshop on Generic Attacks and Proofs in Symmetric Cryptography (GAPS 2025).
-baseurl: "/gaps2025" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://gapsworkshop@github.io" # the base hostname & protocol for your site, e.g. http://example.com
-domain: gapsworkshop.github.io
+domain: scopeworkshop.github.io
 cssurl: "/assets/css"
 imageurl: "/assets/images"
 jsurl: "/assets/js"
 
-google: "v4JhPdP7T5fUY9QmdbUhBVI2ElJRfZqYM3EPmwodQrQ"
+# google: "v4JhPdP7T5fUY9QmdbUhBVI2ElJRfZqYM3EPmwodQrQ"
 
 sass:
   style: compressed
