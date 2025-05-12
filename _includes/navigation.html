@@ -1,26 +1,24 @@
-<nav class="navbar">
-  <div class="container">
-	<ul class="menu-list bar-menu" id="full-nav">
+<nav class="sidebar-nav">
+  <div class="sidebar-container">
+    <a class="logo" href="{{ site.baseurl }}/">SCOPES 2025</a>
+    <ul class="sidebar-menu">
+      {% for item in site.data.navigation %}
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#{{ item.link }}">{{ item.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="mobile-menu">
+      <a class="hamburger-text" href="#" data-hamburger="#_hamburger">&#9776;</a>
+      <div id="_hamburger" class="hamburger">
+        <ul class="hamburger-list">
           {% for item in site.data.navigation %}
-          <li class="navbar-item">
-	    <a class="navbar-link" href="#{{ item.link }}">{{ item.name }}</a>
+          <li class="hamburger-item">
+            <a class="hamburger-link" href="#{{ item.link }}">{{ item.name }}</a>
           </li>
           {% endfor %}
-	</ul>
-	<ul class="menu-list hamburger-menu" id="hamburger-nav">
-          <li class="navbar-item">
-            <div id="_hamburger" class="hamburger">
-              <ul class="hamburger-list">
-		{% for item in site.data.navigation %}
-		<li class="hamburger-item">
-		  <a class="hamburger-link" href="#{{ item.link }}">{{ item.name }}</a>
-		</li>
-		{% endfor %}
-              </ul>
-	    </div>
-	  <a class="hamburger-text" href="#" data-hamburger="#_hamburger">&#9776;</a>
-          </li>
-	</ul>
-	<a class="logo" href="{{ site.baseurl }}/">SCOPES 2025</a>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
