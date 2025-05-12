@@ -2,22 +2,26 @@
 <html lang="en">
   {% include header.html %}
   <body>
-   <!-- 
-  ===== 左侧悬浮菜单栏补丁开始 =====
-  这段代码添加了一个左侧悬浮菜单栏，同时保留了原始的顶部菜单栏代码
-   -->
-  <div class="floating-sidebar">
-      <div class="floating-sidebar-title">SCOPES 2025</div>
-      <div class="floating-sidebar-toggle">&#9776;</div>
-      <ul class="floating-sidebar-menu">
-      {% for item in site.data.navigation %}
-      <li class="floating-sidebar-item">
+<!-- 
+  ===== 左侧悬浮菜单栏综合补丁 =====
+  解决三个问题：缩窄悬浮框、修复移动设备汉堡菜单、添加标题链接
+-->
+<div class="floating-sidebar">
+  <!-- 添加链接到页首 -->
+  <div class="floating-sidebar-title">
+    <a href="#" class="floating-sidebar-title-link">SCOPES 2025</a>
+  </div>
+  <!-- 确保汉堡菜单图标显示 -->
+  <div class="floating-sidebar-toggle" style="display:block;">&#9776; 菜单</div>
+  <ul class="floating-sidebar-menu">
+    {% for item in site.data.navigation %}
+    <li class="floating-sidebar-item">
       <a class="floating-sidebar-link" href="#{{ item.link }}">{{ item.name }}</a>
     </li>
-        {% endfor %}
-        </ul>
-    </div>
-    <!-- ===== 左侧悬浮菜单栏补丁结束 ===== -->
+    {% endfor %}
+  </ul>
+</div>
+<!-- ===== 左侧悬浮菜单栏综合补丁结束 ===== -->
     <!-- Primary Layout -->
       <div class="container">
       {% include navigation.html %}
