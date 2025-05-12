@@ -1,0 +1,12 @@
+- name: About
+  link: about
+- name: Venue
+  link: venue
+- name: Invited Speakers
+  link: speakers
+- name: Participants
+  link: participants
+- name: Program
+  link: program
+- name: Contact
+  link: contact

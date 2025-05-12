@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="container">
+	<a class="logo" href="{{ site.baseurl }}/">GAPS 2025</a>
+	<ul class="menu-list bar-menu" id="full-nav">
+          {% for item in site.data.navigation %}
+          <li class="navbar-item">
+	    <a class="navbar-link" href="#{{ item.link }}">{{ item.name }}</a>
+          </li>
+          {% endfor %}
+	</ul>
+	<ul class="menu-list hamburger-menu" id="hamburger-nav">
+          <li class="navbar-item">
+            <a class="hamburger-text" href="#" data-hamburger="#_hamburger">&#9776;</a>
+            <div id="_hamburger" class="hamburger">
+              <ul class="hamburger-list">
+		{% for item in site.data.navigation %}
+		<li class="hamburger-item">
+		  <a class="hamburger-link" href="#{{ item.link }}">{{ item.name }}</a>
+		</li>
+		{% endfor %}
+              </ul>
+	    </div>
+	  </li>
+	</ul>
+  </div>
+</nav>
