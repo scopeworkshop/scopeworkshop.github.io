@@ -4,15 +4,15 @@
   <body>
 <!-- 
   ===== 左侧悬浮菜单栏综合补丁 =====
-  解决三个问题：缩窄悬浮框、修复移动设备汉堡菜单、添加标题链接
+  包含所有优化：缩窄悬浮框、优化汉堡菜单图标、添加标题链接
 -->
 <div class="floating-sidebar">
   <!-- 添加链接到页首 -->
   <div class="floating-sidebar-title">
-    <a href="#" class="floating-sidebar-title-link">SCOPE 2025</a>
+    <a href="#" class="floating-sidebar-title-link">SCOPES 2025</a>
   </div>
-  <!-- 确保汉堡菜单图标显示 -->
-  <div class="floating-sidebar-toggle" style="display:block;">&#9776; </div>
+  <!-- 只保留汉堡图标，去掉"菜单"两个字 -->
+  <div class="floating-sidebar-toggle">&#9776;</div>
   <ul class="floating-sidebar-menu">
     {% for item in site.data.navigation %}
     <li class="floating-sidebar-item">
@@ -22,7 +22,7 @@
   </ul>
 </div>
 <!-- ===== 左侧悬浮菜单栏综合补丁结束 ===== -->
-    <!-- Primary Layout -->
+        <!-- Primary Layout -->
       <div class="container">
       {% include navigation.html %}
       {{ content }}
