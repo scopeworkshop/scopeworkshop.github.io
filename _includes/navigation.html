@@ -9,7 +9,6 @@
 	</ul>
 	<ul class="menu-list hamburger-menu" id="hamburger-nav">
           <li class="navbar-item">
-            <a class="hamburger-text" href="#" data-hamburger="#_hamburger">&#9776;</a>
             <div id="_hamburger" class="hamburger">
               <ul class="hamburger-list">
 		{% for item in site.data.navigation %}
@@ -19,7 +18,8 @@
 		{% endfor %}
               </ul>
 	    </div>
-	  </li>
+	  <a class="hamburger-text" href="#" data-hamburger="#_hamburger">&#9776;</a>
+          </li>
 	</ul>
 	<a class="logo" href="{{ site.baseurl }}/">SCOPES 2025</a>
   </div>
