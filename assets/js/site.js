@@ -74,3 +74,43 @@ $(document).ready(function () {
 
     init();
 });
+
+
+/*
+ * ===== 左侧悬浮菜单栏补丁开始 =====
+ * 这段代码添加了左侧悬浮菜单栏的交互功能
+ */
+$(document).ready(function() {
+  // 显示悬浮菜单栏
+  $('.floating-sidebar').show();
+  
+  // 移动设备菜单展开/折叠
+  $('.floating-sidebar-toggle').on('click', function() {
+    $('.floating-sidebar').toggleClass('expanded');
+  });
+  
+  // 点击菜单项后滚动到对应位置
+  $('.floating-sidebar-link').on('click', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    var $target = $(target);
+    
+    // 滚动到目标位置
+    $('html, body').animate({
+      scrollTop: $target.offset().top - 20
+    }, 600, 'swing', function() {
+      history.pushState(null, null, target);
+    });
+    
+    // 在移动设备上点击后折叠菜单
+    $('.floating-sidebar').removeClass('expanded');
+  });
+  
+  // 点击页面其他区域关闭移动设备上展开的菜单
+  $(document).on('click', function(e) {
+    if (!$(e.target).closest('.floating-sidebar').length) {
+      $('.floating-sidebar').removeClass('expanded');
+    }
+  });
+});
+/* ===== 左侧悬浮菜单栏补丁结束 ===== */
