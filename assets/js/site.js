@@ -75,58 +75,45 @@ $(document).ready(function () {
     init();
 });
 
-
-/*
- * ===== 左侧悬浮菜单栏补丁开始 =====
- * 这段代码添加了左侧悬浮菜单栏的交互功能
- */
-$(document).ready(function() {
-  // 显示悬浮菜单栏
-  $('.floating-sidebar').show();
-  
-  // 移动设备菜单展开/折叠
-  $('.floating-sidebar-toggle').on('click', function() {
-    $('.floating-sidebar').toggleClass('expanded');
-  });
-  
-  // 点击菜单项后滚动到对应位置
-  $('.floating-sidebar-link').on('click', function(e) {
-    e.preventDefault();
-    var target = $(this).attr('href');
-    var $target = $(target);
-    
-    // 滚动到目标位置
-    $('html, body').animate({
-      scrollTop: $target.offset().top - 20
-    }, 600, 'swing', function() {
-      history.pushState(null, null, target);
-    });
-    
-    // 在移动设备上点击后折叠菜单
-    $('.floating-sidebar').removeClass('expanded');
-  });
-  
-  // 点击页面其他区域关闭移动设备上展开的菜单
-  $(document).on('click', function(e) {
-    if (!$(e.target).closest('.floating-sidebar').length) {
-      $('.floating-sidebar').removeClass('expanded');
-    }
-  });
-});
-/* ===== 左侧悬浮菜单栏补丁结束 ===== */
 /*
  * ===== 左侧悬浮菜单栏综合补丁 =====
- * 解决三个问题：缩窄悬浮框、修复移动设备汉堡菜单、添加标题链接
+ * 包含所有优化：缩窄悬浮框、优化汉堡菜单图标、添加标题链接
  */
 $(document).ready(function() {
   // 显示悬浮菜单栏
   $('.floating-sidebar').show();
   
-  // 移动设备菜单展开/折叠
+  // 确保在移动设备上正确显示汉堡图标
+  function updateMenuVisibility() {
+    if ($(window).width() <= 767) {
+      // 移动设备上初始隐藏菜单项
+      if (!$('.floating-sidebar').hasClass('expanded')) {
+        $('.floating-sidebar-menu').hide();
+      }
+      $('.floating-sidebar-toggle').show();
+    } else {
+      // 非移动设备上始终显示菜单项，隐藏汉堡图标
+      $('.floating-sidebar-menu').show();
+      $('.floating-sidebar-toggle').hide();
+    }
+  }
+  
+  // 页面加载和窗口大小改变时更新菜单显示
+  updateMenuVisibility();
+  $(window).resize(updateMenuVisibility);
+  
+  // 点击汉堡图标切换菜单显示
   $('.floating-sidebar-toggle').on('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     $('.floating-sidebar').toggleClass('expanded');
+    
+    // 展开/折叠菜单项
+    if ($('.floating-sidebar').hasClass('expanded')) {
+      $('.floating-sidebar-menu').slideDown(300);
+    } else {
+      $('.floating-sidebar-menu').slideUp(300);
+    }
   });
   
   // 点击菜单项后滚动到对应位置
@@ -144,6 +131,9 @@ $(document).ready(function() {
     
     // 在移动设备上点击后折叠菜单
     $('.floating-sidebar').removeClass('expanded');
+    if ($(window).width() <= 767) {
+      $('.floating-sidebar-menu').slideUp(300);
+    }
   });
   
   // 标题链接点击事件 - 滚动到页面顶部
@@ -159,12 +149,18 @@ $(document).ready(function() {
     
     // 在移动设备上点击后折叠菜单
     $('.floating-sidebar').removeClass('expanded');
+    if ($(window).width() <= 767) {
+      $('.floating-sidebar-menu').slideUp(300);
+    }
   });
   
   // 点击页面其他区域关闭移动设备上展开的菜单
   $(document).on('click', function(e) {
     if (!$(e.target).closest('.floating-sidebar').length) {
       $('.floating-sidebar').removeClass('expanded');
+      if ($(window).width() <= 767) {
+        $('.floating-sidebar-menu').slideUp(300);
+      }
     }
   });
 });
