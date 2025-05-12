@@ -384,3 +384,29 @@ ol, ul {
 }
 
 /* ===== 左侧悬浮菜单栏补丁结束 ===== */
+
+/* 
+ * ===== 补丁1：缩窄悬浮框 =====
+ * 减小悬浮框宽度，避免遮挡正文
+ */
+
+/* 修改悬浮菜单栏容器尺寸 */
+.floating-sidebar {
+  width: 180px; /* 减小宽度 */
+  padding: 10px; /* 减小内边距 */
+  left: 10px; /* 靠近左边缘 */
+}
+
+/* 调整标题大小 */
+.floating-sidebar-title {
+  font-size: 1.5rem; /* 减小标题字体 */
+  margin-bottom: 15px; /* 减小下边距 */
+}
+
+/* 调整菜单项样式 */
+.floating-sidebar-link {
+  padding: 6px 8px; /* 减小内边距 */
+  font-size: 12px; /* 减小字体大小 */
+}
+
+/* ===== 补丁1结束 ===== */
