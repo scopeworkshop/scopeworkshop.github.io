@@ -28,7 +28,7 @@ ol, ul {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url('{{ site.imageurl | relative_url }}/gapsboard.png') center center / cover no-repeat;
+    background: url('{{ site.imageurl | relative_url }}/banner.png') center center / cover no-repeat;
     /*background-position: 0% 50%;
     background-size: cover;
     background-repeat: no-repeat;*/
