@@ -1,42 +1,6 @@
-- first: Elena
-  last: Andreeva
-  affiliation: TU Wien
-- first: Tim
-  last: Beyne
-  affiliation: COSIC, KU Leuven
-- first: Wonseok
-  last: Choi
-  affiliation: Purdue University and Georgia Tech
-- first: Chun
-  last: Guo
-  affiliation: Shandong University
-- first: Tetsu
-  last: Iwata
-  affiliation: Nagoya University
-- first: Kazuhiko
-  last: Minematsu
-  affiliation: NEC Corporation
-- first: Mridul
-  last: Nandi
-  affiliation: ISI Kolkata
-- first: Yu
-  last: Sasaki
-  affiliation: NTT Secure Platform Labs and NIST
-- first: André
-  last: Schrottenloher
-  affiliation: Inria Rennes
-- first: Patrick
-  last: Struck
-  affiliation: University of Konstanz
-- first: Charlotte
-  last: Lefevre
-  affiliation: Radboud University
-- first: Gaëtan
-  last: Leurent
-  affiliation: Inria Paris
-- first: Byeonghak
-  last: Lee
-  affiliation: Samsung SDS
-- first: Nicky
-  last: Mouha
-  affiliation: NIST
+- first: first
+  last: last
+  affiliation: university
+- first: first2
+  last: last2
+  affiliation: university2
