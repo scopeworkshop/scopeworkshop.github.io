@@ -1,14 +1,24 @@
+import $ from "jquery"
+
 $(document).ready(() => {
-  var $sidebar = $(".sidebar"),
-    $body = $("body"),
-    $window = $(window),
+  var $floatingSidebar = $(".floating-sidebar"),
     $hamSymb = $("[data-hamburger]"),
     $document = $(document)
 
   function init() {
     $hamSymb.on("click", toggleHamburger)
-    $document.on("click", closeHamburger)
+    $document.on("click", (e) => {
+      if (!$(e.target).closest(".floating-sidebar").length && !$(e.target).is($hamSymb)) {
+        closeHamburger()
+      }
+    })
     $('a[href^="#"]:not([href="#"])').on("click", smoothScroll)
+
+    // Mobile sidebar toggle
+    $(".hamburger-text").on("click", (e) => {
+      e.preventDefault()
+      $floatingSidebar.toggleClass("expanded")
+    })
   }
 
   function smoothScroll(e) {
@@ -29,10 +39,6 @@ $(document).ready(() => {
     )
   }
 
-  function rotateHamburger(deg) {
-    $hamSymb.css("transform", `rotate(${deg}deg)`)
-  }
-
   function toggleHamburger(e) {
     if (e) {
       e.preventDefault()
@@ -40,17 +46,12 @@ $(document).ready(() => {
     }
 
     var hamburger = $("#_hamburger")
-    if (!hamburger.hasClass("open")) {
-      rotateHamburger(90)
-    } else {
-      rotateHamburger(0)
-    }
     hamburger.toggleClass("open")
   }
 
   function closeHamburger() {
     $(".hamburger").removeClass("open")
-    rotateHamburger(0)
+    $floatingSidebar.removeClass("expanded")
   }
 
   init()
