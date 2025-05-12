@@ -1,25 +1,126 @@
----
----
 $text-color: #222222;
 $header-color: #00799E;
 $title-color: #ffffff;
+$sidebar-width: 250px;
+$sidebar-bg: #f8f8f8;
+$sidebar-border: #eeeeee;
+
 body {
-    font-family: "Lora", serif; }
+    font-family: "Lora", serif;
+    margin: 0;
+    padding: 0;
+}
+
 a {
     color: $text-color;
-    text-decoration: none; }
+    text-decoration: none;
+}
+
 a:hover {
     color: $header-color;
-    text-decoration: none; }
+    text-decoration: none;
+}
+
 ul {
-  list-style: disc outside; }
+  list-style: disc outside;
+}
+
 ol {
-  list-style: decimal outside; }
+  list-style: decimal outside;
+}
+
 ol, ul {
   padding-left: 3rem;
-  margin-top: 0; }
+  margin-top: 0;
+}
+
 .container {
-    max-width: 960px; }
+    max-width: 960px;
+    padding: 0 20px;
+}
+
+/* Site Layout */
+.site-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: $sidebar-bg;
+    border-right: 1px solid $sidebar-border;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.sidebar-container {
+    padding: 20px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-family: "Libre Baskerville", serif;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.logo,
+.logo:hover {
+    color: $header-color;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: $text-color;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link:hover, 
+.sidebar-link.active {
+    color: $header-color;
+    border-left-color: $header-color;
+    background-color: rgba(0, 121, 158, 0.05);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: block;
+    text-align: center;
+}
+
 .poster {
     position: relative;
     height: 40vh;
@@ -35,17 +136,8 @@ ol, ul {
     border: 3px solid #ebebeb;
     border-radius: 10px;
     box-shadow: inset rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
-		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;}
-.logo {
-    font-family: "Libre Baskerville", serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    text-align: left;
-    text-decoration: none;
-    margin-bottom: 0; }
-.logo,
-.logo:hover {
-    color: $header-color;
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 20px;
 }
 .title-small,
 .date,
@@ -157,16 +249,17 @@ ol, ul {
     display: block;
   }
   .hamburger-text {
-      display: inline; /* Keeps it inline */
-      padding: 5px 10px; /* Adds some space around the text */
-      border: 2px solid $header-color; /* Border around text */
-      border-radius: 5px; /* Soft corners */
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* More noticeable shadow */
-      color: $header-color;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.3s ease; }
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid $header-color;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    color: $header-color;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
 .hamburger {
     display: none;
     position: absolute;
@@ -174,11 +267,13 @@ ol, ul {
     border: 1px solid #eeeeee;
     border-radius: 4px;
     top: 100%;
-    left: -120%;
+    left: 50%;
+    transform: translateX(-50%);
     -webkit-filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
-       -moz-filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
-       filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
-       z-index: 99; }
+    -moz-filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
+    filter: drop-shadow(0 0 6px rgba(0,0,0,.1));
+    z-index: 99;
+}
   .hamburger-item:first-child .hamburger-link:after, 
   .hamburger-item:first-child .hamburger-link:before {
     bottom: 100%;
@@ -232,7 +327,7 @@ ol, ul {
 /* Larger than phone */
     @media (min-width: 550px) {
   .poster {
-      margin-top: 8rem; }
+      margin-top: 2rem; }
   .value-props {
       margin-top: 9rem;
       margin-bottom: 7rem; }
@@ -244,6 +339,32 @@ ol, ul {
       margin-top: 4.5rem; }
   .maps-view {
       width: 50vh; }
+}
+
+@media (min-width: 768px) {
+    .site-container {
+        flex-direction: row;
+    }
+    
+    .sidebar {
+        width: $sidebar-width;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .main-content {
+        margin-left: $sidebar-width;
+        width: calc(100% - #{$sidebar-width});
+    }
+    
+    .sidebar-menu {
+        display: block;
+    }
+    
+    .mobile-menu {
+        display: none;
+    }
 }
 
 /* Larger than tablet */
